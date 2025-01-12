@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+      API1
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Fetch and Sync External API Users</h5>
+      <p class="card-text">Click the button below to fetch data from an external API and sync it to the database.</p>
+      <button id="sync-api1" class="btn btn-primary">Sync API1</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+      API2
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Fetch and Sync External API Users</h5>
+      <p class="card-text">Click the button below to fetch data from another API and sync it to the database.</p>
+      <button id="sync-api2" class="btn btn-primary">Sync API2</button>
+    </div>
+</div>
+
+<script>
+  // API1ボタンをクリックしたときの動作
+  document.getElementById('sync-api1').addEventListener('click', function() {
+    fetch('/apiconf/sync-users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message || 'Sync completed successfully!'))
+    .catch(err => alert('Error syncing data: ' + err));
+  });
+
+  // API2ボタンをクリックしたときの動作
+  document.getElementById('sync-api2').addEventListener('click', function() {
+    fetch('/apiconf/sync-users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => alert(data.message || 'Sync completed successfully!'))
+    .catch(err => alert('Error syncing data: ' + err));
+  });
+</script>
+
+{% endblock %}

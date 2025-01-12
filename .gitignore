@@ -1,0 +1,8 @@
+# 個別のファイルを無視
+config.py
+
+# 特定のフォルダを無視
+**/__pycache__/
+__pycache__/
+routes/__pycache__/
+services/__pycache__/
